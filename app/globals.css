@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050505;
+  --foreground: #f7f5f0;
+
+  /* Brand palette — black / white / gold only */
+  --black: #050505;
+  --black-soft: #0d0d0d;
+  --charcoal: #161616;
+  --ivory: #f7f5f0;
+  --gold: #d4af37;
+  --gold-light: #f1d97a;
+  --gold-dark: #9c7a22;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-black: var(--black);
+  --color-black-soft: var(--black-soft);
+  --color-charcoal: var(--charcoal);
+  --color-ivory: var(--ivory);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-playfair);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--black);
+}
+
+/* Guaranteed-visible, on-brand keyboard focus state site-wide */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Reusable glassmorphism surface for the navbar / cards */
+.glass {
+  background: rgba(247, 245, 240, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.14);
+}
+
+/* Gold gradient text for premium accents */
+.text-gold-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--gold-light) 0%,
+    var(--gold) 45%,
+    var(--gold-dark) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
