@@ -3,6 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import { MessageCircle, Phone } from "lucide-react";
 import { PHONE_HREF, WHATSAPP_HREF } from "@/lib/contact";
+import CinematicAtmosphere from "./CinematicAtmosphere";
 
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
@@ -20,20 +21,14 @@ export default function CallToAction() {
     <section
       id="cta"
       aria-labelledby="cta-heading"
-      className="relative overflow-hidden border-t border-gold/10 bg-black py-28 lg:py-32"
+      className="relative overflow-hidden bg-black py-32 lg:py-40"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 flex justify-center"
-      >
-        <div
-          className="h-[420px] w-[720px] opacity-60"
-          style={{
-            background:
-              "radial-gradient(50% 50% at 50% 30%, rgba(212,175,55,0.14) 0%, rgba(212,175,55,0) 70%)",
-          }}
-        />
-      </div>
+      <CinematicAtmosphere
+        level="minimal"
+        glowPosition="50% 30%"
+        cloudPosition="50% 75%"
+        cloudPositionSecondary="15% 15%"
+      />
 
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center px-6 text-center lg:px-12">
         <motion.div
@@ -57,7 +52,7 @@ export default function CallToAction() {
           viewport={{ once: true, margin: "-100px" }}
           custom={0.1}
           variants={fadeUp}
-          className="mt-6 font-display text-3xl leading-tight text-ivory sm:text-4xl md:text-5xl"
+          className="mt-6 font-display text-4xl leading-tight text-ivory sm:text-5xl md:text-6xl"
         >
           Taşıma Sürecinizi Bugün Başlatın
         </motion.h2>

@@ -11,6 +11,7 @@ import {
   Warehouse,
   type LucideIcon,
 } from "lucide-react";
+import CinematicAtmosphere from "./CinematicAtmosphere";
 
 const MotionLink = motion.create(Link);
 
@@ -82,16 +83,13 @@ export default function Services() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="relative overflow-hidden bg-black py-28 lg:py-32"
+      className="relative overflow-hidden bg-black py-32 lg:py-40"
     >
-      {/* Subtle static warm glow — ties into the Hero's atmosphere, no animation */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[420px]"
-        style={{
-          background:
-            "radial-gradient(60% 100% at 50% 0%, rgba(212,175,55,0.08) 0%, rgba(212,175,55,0) 70%)",
-        }}
+      <CinematicAtmosphere
+        level="soft"
+        glowPosition="50% 0%"
+        cloudPosition="15% 55%"
+        cloudPositionSecondary="85% 90%"
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
@@ -133,7 +131,7 @@ export default function Services() {
           ölçek ve ihtiyaçlara uygun lojistik hizmetleri sunuyoruz.
         </motion.p>
 
-        <div className="mt-20 grid grid-cols-1 gap-x-12 gap-y-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-16">
+        <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-12">
           {SERVICES.map(({ icon: Icon, title, href, description, featured }, i) => (
             <MotionLink
               key={title}
@@ -143,57 +141,41 @@ export default function Services() {
               viewport={{ once: true, margin: "-80px" }}
               custom={0.08 * i}
               variants={fadeUp}
-              whileHover={{
-                y: featured ? -6 : -4,
-                transition: { duration: 0.3, ease: "easeOut" },
-              }}
-              className={`group relative block border-t pt-8 transition-colors duration-500 ${
-                featured
-                  ? "border-gold/40 hover:border-gold/70"
-                  : "border-gold/20 hover:border-gold/50"
+              whileHover={{ y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
+              className={`group relative block rounded-3xl border border-gold/20 bg-black/80 p-10 shadow-[0_25px_60px_-24px_rgba(212,175,55,0.12)] backdrop-blur-xl transition-all duration-500 hover:border-gold/40 hover:shadow-[0_30px_70px_-20px_rgba(212,175,55,0.2)] lg:p-12 ${
+                featured ? "ring-1 ring-gold/40" : ""
               }`}
             >
               {featured && (
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -inset-x-4 -inset-y-3 rounded-2xl bg-[radial-gradient(60%_80%_at_20%_0%,rgba(212,175,55,0.10)_0%,transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                />
+                <span className="mb-5 inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold">
+                  <span className="h-1 w-1 rounded-full bg-gold" />
+                  Öne Çıkan Hizmet
+                </span>
               )}
 
-              <div className="relative">
-                {featured && (
-                  <span className="mb-5 inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold">
-                    <span className="h-1 w-1 rounded-full bg-gold" />
-                    Öne Çıkan Hizmet
-                  </span>
-                )}
-
-                <div className="flex items-center justify-between">
-                  <Icon
-                    className={`h-7 w-7 transition-colors duration-500 ${
-                      featured
-                        ? "text-gold group-hover:text-gold-light"
-                        : "text-gold/90 group-hover:text-gold-light"
-                    }`}
-                    strokeWidth={1.5}
-                    aria-hidden="true"
-                  />
-                  <span
-                    className={`font-display text-sm ${
-                      featured ? "text-gold/60" : "text-gold/40"
-                    }`}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                </div>
-
-                <h3 className="mt-10 font-display text-xl text-ivory sm:text-2xl">
-                  {title}
-                </h3>
-                <p className="mt-4 max-w-sm text-sm leading-relaxed text-ivory/70 sm:text-base">
-                  {description}
-                </p>
+              <div className="flex items-center justify-between">
+                <Icon
+                  className={`h-7 w-7 transition-colors duration-500 group-hover:text-gold-light ${
+                    featured ? "text-gold" : "text-gold/90"
+                  }`}
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
+                <span
+                  className={`font-display text-sm ${
+                    featured ? "text-gold/60" : "text-gold/40"
+                  }`}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
               </div>
+
+              <h3 className="mt-10 font-display text-xl text-ivory sm:text-2xl">
+                {title}
+              </h3>
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-ivory/70 sm:text-base">
+                {description}
+              </p>
             </MotionLink>
           ))}
         </div>

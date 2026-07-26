@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import { ClipboardList, Lock, PackageCheck, Route, type LucideIcon } from "lucide-react";
+import CinematicAtmosphere from "./CinematicAtmosphere";
 
 const STEPS: {
   number: string;
@@ -55,8 +56,15 @@ export default function HowWeWork() {
     <section
       id="how-we-work"
       aria-labelledby="how-we-work-heading"
-      className="relative overflow-hidden bg-black py-28 lg:py-32"
+      className="relative overflow-hidden bg-black py-32 lg:py-40"
     >
+      <CinematicAtmosphere
+        level="dim"
+        glowPosition="20% 10%"
+        cloudPosition="80% 80%"
+        cloudPositionSecondary="10% 90%"
+      />
+
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
         <motion.div
           initial="hidden"
@@ -79,7 +87,7 @@ export default function HowWeWork() {
           viewport={{ once: true, margin: "-100px" }}
           custom={0.1}
           variants={fadeUp}
-          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-ivory sm:text-4xl md:text-5xl"
+          className="mt-6 max-w-2xl font-display text-4xl leading-tight text-ivory sm:text-5xl md:text-6xl"
         >
           Nasıl Çalışıyoruz
         </motion.h2>
@@ -96,14 +104,14 @@ export default function HowWeWork() {
           adımda yönetiyoruz.
         </motion.p>
 
-        <div className="relative mt-24">
+        <div className="relative mt-28">
           {/* Thin gold connecting line — aligned to the numbers' vertical center, desktop only */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-[12.5%] top-12 hidden h-px bg-gradient-to-r from-gold/0 via-gold/30 to-gold/0 lg:block"
+            className="pointer-events-none absolute inset-x-[12.5%] top-12 hidden h-px bg-gradient-to-r from-gold/0 via-gold/35 to-gold/0 lg:block"
           />
 
-          <ol className="grid grid-cols-1 gap-16 lg:grid-cols-4 lg:gap-10">
+          <ol className="grid grid-cols-1 gap-16 lg:grid-cols-4 lg:gap-12">
             {STEPS.map(({ number, icon: Icon, title, description }, i) => (
               <motion.li
                 key={number}
@@ -124,7 +132,7 @@ export default function HowWeWork() {
                   strokeWidth={1.5}
                   aria-hidden="true"
                 />
-                <h3 className="mt-4 font-display text-lg text-ivory sm:text-xl">
+                <h3 className="mt-4 font-display text-xl text-ivory sm:text-2xl">
                   {title}
                 </h3>
                 <p className="mt-2 max-w-xs text-sm leading-relaxed text-ivory/65">

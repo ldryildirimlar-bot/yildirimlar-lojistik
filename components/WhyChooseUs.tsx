@@ -10,6 +10,7 @@ import {
   Users,
   type LucideIcon,
 } from "lucide-react";
+import CinematicAtmosphere from "./CinematicAtmosphere";
 
 const REASONS: { icon: LucideIcon; title: string; description: string }[] = [
   {
@@ -66,8 +67,15 @@ export default function WhyChooseUs() {
     <section
       id="why-choose-us"
       aria-labelledby="why-choose-us-heading"
-      className="relative overflow-hidden bg-black py-28 lg:py-32"
+      className="relative overflow-hidden bg-black py-32 lg:py-40"
     >
+      <CinematicAtmosphere
+        level="balanced"
+        glowPosition="85% 15%"
+        cloudPosition="30% 85%"
+        cloudPositionSecondary="75% 20%"
+      />
+
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
         <motion.div
           initial="hidden"
@@ -107,7 +115,7 @@ export default function WhyChooseUs() {
           standartlarımızla yönetiyoruz.
         </motion.p>
 
-        <div className="mt-20 grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-12">
+        <div className="mt-16 grid grid-cols-1 gap-x-12 gap-y-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-16">
           {REASONS.map(({ icon: Icon, title, description }, i) => (
             <motion.div
               key={title}
@@ -116,8 +124,8 @@ export default function WhyChooseUs() {
               viewport={{ once: true, margin: "-80px" }}
               custom={0.08 * i}
               variants={fadeUp}
-              whileHover={{ y: -4, transition: { duration: 0.3, ease: "easeOut" } }}
-              className="group rounded-2xl border border-gold/15 bg-ivory/[0.04] p-10 backdrop-blur-[20px] transition-colors duration-500 hover:border-gold/35 lg:p-12"
+              whileHover={{ y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
+              className="group rounded-3xl border border-gold/20 bg-black/80 p-10 shadow-[0_25px_60px_-24px_rgba(212,175,55,0.12)] backdrop-blur-xl transition-all duration-500 hover:border-gold/40 hover:shadow-[0_30px_70px_-20px_rgba(212,175,55,0.2)] lg:p-12"
             >
               <Icon
                 className="h-5 w-5 text-gold/70 transition-colors duration-500 group-hover:text-gold"

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
@@ -16,6 +17,7 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -79,8 +81,8 @@ export default function Navbar() {
         </MotionLink>
       </div>
 
-      {/* Mobile layout */}
-      <div className="flex h-20 items-center justify-between px-6 md:hidden">
+      {/* Mobile layout — kept above the full-screen overlay (z-[60] > z-50) so the logo and close button stay usable while the menu is open */}
+      <div className="relative z-[60] flex h-20 items-center justify-between px-6 md:hidden">
         <Link href="/" className="flex items-center">
           <Image
             src="/images/logo.png"
@@ -107,37 +109,43 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile dropdown menu */}
+      {/* Mobile full-screen menu overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden glass md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-50 overflow-y-auto bg-[#050505]/95 backdrop-blur-xl md:hidden"
           >
-            <nav className="flex flex-col gap-1 px-6 pb-8 pt-2">
-              {NAV_LINKS.map((link, i) => (
-                <MotionLink
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.08 * i, duration: 0.35, ease: "easeOut" }}
-                  className="border-b border-white/5 py-4 text-base font-medium text-ivory/85 transition-colors hover:text-gold"
-                >
-                  {link.label}
-                </MotionLink>
-              ))}
+            <nav className="flex min-h-full flex-col items-center justify-center gap-10 px-6 py-28">
+              {NAV_LINKS.map((link, i) => {
+                const isActive = pathname === link.href;
+                return (
+                  <MotionLink
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.07 * i, duration: 0.35, ease: "easeOut" }}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`font-display text-3xl font-medium tracking-wide transition-colors duration-300 ${
+                      isActive ? "text-gold" : "text-white hover:text-gold"
+                    }`}
+                  >
+                    {link.label}
+                  </MotionLink>
+                );
+              })}
               <MotionLink
                 href="/#cta"
                 onClick={() => setMobileOpen(false)}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.08 * NAV_LINKS.length, duration: 0.35 }}
-                className="mt-5 inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark px-6 py-3 text-sm font-semibold text-black shadow-[0_6px_22px_rgba(212,175,55,0.22)]"
+                transition={{ delay: 0.07 * NAV_LINKS.length, duration: 0.35 }}
+                className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark px-8 py-4 text-base font-semibold text-black shadow-[0_6px_22px_rgba(212,175,55,0.22)]"
               >
                 Teklif Al
                 <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
