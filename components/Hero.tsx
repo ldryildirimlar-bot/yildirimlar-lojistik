@@ -100,7 +100,7 @@ export default function Hero() {
             </MotionLink>
 
             <motion.a
-              href="https://wa.me/90"
+              href="https://wa.me/905352955210"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ y: -2 }}
