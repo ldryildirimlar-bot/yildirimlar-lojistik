@@ -10,10 +10,10 @@ const SERVICE_SLUGS = [
   "yol-yardim-cekici",
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default function (): MetadataRoute. {
   const now = new Date();
 
-  const staticRoutes: MetadataRoute.Sitemap = [
+  const staticRoutes: MetadataRoute. = [
     { url: WEBSITE_URL, lastModified: now, changeFrequency: "monthly", priority: 1 },
     {
       url: `${WEBSITE_URL}/hakkimizda`,
@@ -41,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const serviceRoutes: MetadataRoute.Sitemap = SERVICE_SLUGS.map((slug) => ({
+  const serviceRoutes: MetadataRoute. = SERVICE_SLUGS.map((slug) => ({
     url: `${WEBSITE_URL}/hizmetler/${slug}`,
     lastModified: now,
     changeFrequency: "monthly",
