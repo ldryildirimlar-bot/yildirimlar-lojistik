@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import { WEBSITE_URL } from "@/lib/contact";
 import { organizationJsonLd } from "@/lib/structuredData";
@@ -45,10 +46,27 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-black text-ivory">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16537034021"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16537034021');
+          `}
+        </Script>
+
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
         />
+
         {children}
       </body>
     </html>
