@@ -10,8 +10,7 @@ export const COMPANY_NAME = "Lider Yıldırımlar Lojistik & Nakliyat";
 export const PHONE_NUMBER = "0535 295 52 10";
 export const WHATSAPP_NUMBER = "0535 295 52 10";
 export const EMAIL_ADDRESS = "ldryildirimlar@gmail.com";
-export const WEBSITE_URL = "https://vanyıldırımlarlojistik.com.tr";
-export const ADDRESS = "Van / İpekyolu";
+export const WEBSITE_URL = "https://vanyildirimlarlojistik.com.tr";
 export const WORKING_HOURS = "7/24";
 export const INSTAGRAM_URL = "https://instagram.com/yildirimlar_lojistik";
 // No public Facebook URL provided yet — display the page name only, not a link.
@@ -24,6 +23,3 @@ const WHATSAPP_DIGITS = "905352955210";
 export const PHONE_HREF = `tel:${PHONE_E164}`;
 export const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_DIGITS}`;
 export const EMAIL_HREF = `mailto:${EMAIL_ADDRESS}`;
-export const MAPS_HREF = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  `${COMPANY_NAME} ${ADDRESS}`
-)}`;

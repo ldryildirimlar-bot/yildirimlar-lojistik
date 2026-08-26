@@ -18,7 +18,7 @@ export default function MissionVision() {
     <section
       id="mission-vision"
       aria-labelledby="mission-vision-heading"
-      className="relative bg-black py-28 lg:py-32"
+      className="relative bg-paper py-28 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <motion.div
@@ -29,8 +29,8 @@ export default function MissionVision() {
           variants={fadeUp}
           className="flex items-center gap-3"
         >
-          <span className="h-px w-8 bg-gold" />
-          <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold/90">
+          <span className="h-px w-8 bg-gold-dark" />
+          <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold-ink">
             Yaklaşımımız
           </span>
         </motion.div>
@@ -42,7 +42,7 @@ export default function MissionVision() {
           viewport={{ once: true, margin: "-100px" }}
           custom={0.1}
           variants={fadeUp}
-          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-ivory sm:text-4xl md:text-5xl"
+          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-charcoal sm:text-4xl md:text-5xl"
         >
           Misyon &amp; Vizyon
         </motion.h2>
@@ -54,12 +54,12 @@ export default function MissionVision() {
             viewport={{ once: true, margin: "-100px" }}
             custom={0.2}
             variants={fadeUp}
-            className="border-l border-gold/20 pl-8"
+            className="border-l border-gold/30 pl-8"
           >
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold/80">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold-ink">
               Misyon
             </span>
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-ivory/80 sm:text-xl">
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-charcoal/80 sm:text-xl">
               Müşterilerimizin yük ve taşıma ihtiyaçlarını güvenli, planlı ve
               zamanında karşılamak.
             </p>
@@ -71,12 +71,12 @@ export default function MissionVision() {
             viewport={{ once: true, margin: "-100px" }}
             custom={0.3}
             variants={fadeUp}
-            className="border-l border-gold/20 pl-8"
+            className="border-l border-gold/30 pl-8"
           >
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold/80">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold-ink">
               Vizyon
             </span>
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-ivory/80 sm:text-xl">
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-charcoal/80 sm:text-xl">
               Taşımacılık süreçlerinde güvenilirliği ve operasyonel disiplini
               önceliklendiren bir çözüm ortağı olmak.
             </p>

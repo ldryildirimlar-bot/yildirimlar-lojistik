@@ -5,14 +5,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, Phone, X } from "lucide-react";
+import { PHONE_HREF, PHONE_NUMBER, WORKING_HOURS } from "@/lib/contact";
 
 const MotionLink = motion.create(Link);
 
 const NAV_LINKS = [
   { label: "Ana Sayfa", href: "/" },
-  { label: "Hizmetler", href: "/#services" },
+  { label: "Hizmetlerimiz", href: "/#services" },
   { label: "Hakkımızda", href: "/hakkimizda" },
+  { label: "Nasıl Çalışıyoruz?", href: "/#how-we-work" },
+  { label: "Blog", href: "/#blog" },
   { label: "İletişim", href: "/iletisim" },
 ];
 
@@ -40,11 +43,11 @@ export default function Navbar() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
           ? "glass shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
-          : "border-b border-transparent bg-transparent"
+          : "glass-rest"
       }`}
     >
       {/* Desktop layout */}
-      <div className="mx-auto hidden h-28 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-10 px-8 md:grid lg:px-16">
+      <div className="mx-auto hidden h-24 max-w-[1600px] grid-cols-[auto_1fr_auto] items-center gap-6 px-8 lg:grid lg:px-12">
         <Link href="/" className="group flex items-center py-4 justify-self-start">
           <Image
             src="/images/logo.png"
@@ -52,16 +55,16 @@ export default function Navbar() {
             width={1806}
             height={871}
             priority
-            className="h-[60px] w-auto object-contain mix-blend-screen transition-transform duration-300 group-hover:scale-[1.03]"
+            className="h-12 w-auto object-contain mix-blend-screen transition-transform duration-300 group-hover:scale-[1.03] lg:h-[52px]"
           />
         </Link>
 
-        <nav className="flex items-center justify-center gap-[18px]">
+        <nav className="hidden items-center justify-center gap-x-6 gap-y-2 lg:flex xl:gap-x-8">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="group relative py-2 text-sm font-medium tracking-wide text-ivory/80 transition-colors duration-300 ease-out hover:text-ivory"
+              className="group relative whitespace-nowrap py-2 text-sm font-medium tracking-wide text-ivory/90 transition-colors duration-300 ease-out hover:text-ivory"
             >
               {link.label}
               <span className="absolute -bottom-0.5 left-1/2 h-px w-full origin-center -translate-x-1/2 scale-x-0 bg-gradient-to-r from-gold-light to-gold transition-transform duration-300 ease-out group-hover:scale-x-100" />
@@ -69,20 +72,35 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <MotionLink
-          href="/#cta"
-          whileHover={{ y: -2 }}
-          whileTap={{ y: 0 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
-          className="inline-flex items-center gap-1.5 justify-self-end rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark px-7 py-3 text-sm font-semibold text-black shadow-[0_6px_22px_rgba(212,175,55,0.22)] transition-shadow duration-300 ease-out hover:shadow-[0_10px_30px_rgba(212,175,55,0.38)]"
-        >
-          Teklif Al
-          <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
-        </MotionLink>
+        <div className="flex items-center justify-self-end gap-6">
+          <a
+            href={PHONE_HREF}
+            className="hidden items-center gap-2.5 text-ivory/90 transition-colors duration-300 hover:text-gold xl:flex"
+          >
+            <Phone className="h-4 w-4 text-gold" strokeWidth={2} aria-hidden="true" />
+            <span className="flex flex-col leading-tight">
+              <span className="text-sm font-semibold">{PHONE_NUMBER}</span>
+              <span className="text-[11px] uppercase tracking-wide text-ivory/60">
+                {WORKING_HOURS} Bize Ulaşın
+              </span>
+            </span>
+          </a>
+
+          <MotionLink
+            href="/#cta"
+            whileHover={{ y: -2 }}
+            whileTap={{ y: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark px-6 py-3 text-xs font-semibold uppercase tracking-wide text-black shadow-[0_6px_22px_rgba(212,175,55,0.22)] transition-shadow duration-300 ease-out hover:shadow-[0_10px_30px_rgba(212,175,55,0.38)] lg:px-7 lg:text-sm"
+          >
+            Ücretsiz Teklif Al
+            <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+          </MotionLink>
+        </div>
       </div>
 
-      {/* Mobile layout — kept above the full-screen overlay (z-[60] > z-50) so the logo and close button stay usable while the menu is open */}
-      <div className="relative z-[60] flex h-20 items-center justify-between px-6 md:hidden">
+      {/* Mobile / tablet layout — kept above the full-screen overlay (z-[60] > z-50) so the logo and close button stay usable while the menu is open */}
+      <div className="relative z-[60] flex h-20 items-center justify-between px-6 md:px-10 lg:hidden">
         <Link href="/" className="flex items-center">
           <Image
             src="/images/logo.png"
@@ -109,7 +127,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile full-screen menu overlay */}
+      {/* Mobile / tablet full-screen menu overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -117,9 +135,9 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-50 overflow-y-auto bg-[#050505]/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-50 overflow-y-auto bg-[#050505]/95 backdrop-blur-xl lg:hidden"
           >
-            <nav className="flex min-h-full flex-col items-center justify-center gap-10 px-6 py-28">
+            <nav className="flex min-h-full flex-col items-center justify-center gap-7 px-6 py-24">
               {NAV_LINKS.map((link, i) => {
                 const isActive = pathname === link.href;
                 return (
@@ -129,9 +147,9 @@ export default function Navbar() {
                     onClick={() => setMobileOpen(false)}
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.07 * i, duration: 0.35, ease: "easeOut" }}
+                    transition={{ delay: 0.06 * i, duration: 0.35, ease: "easeOut" }}
                     aria-current={isActive ? "page" : undefined}
-                    className={`font-display text-3xl font-medium tracking-wide transition-colors duration-300 ${
+                    className={`font-display text-2xl font-medium tracking-wide transition-colors duration-300 ${
                       isActive ? "text-gold" : "text-white hover:text-gold"
                     }`}
                   >
@@ -139,15 +157,24 @@ export default function Navbar() {
                   </MotionLink>
                 );
               })}
+
+              <a
+                href={PHONE_HREF}
+                className="mt-2 flex items-center gap-2.5 text-ivory/80 transition-colors duration-300 hover:text-gold"
+              >
+                <Phone className="h-4 w-4 text-gold" strokeWidth={2} aria-hidden="true" />
+                <span className="text-base font-medium">{PHONE_NUMBER}</span>
+              </a>
+
               <MotionLink
                 href="/#cta"
                 onClick={() => setMobileOpen(false)}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.07 * NAV_LINKS.length, duration: 0.35 }}
-                className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark px-8 py-4 text-base font-semibold text-black shadow-[0_6px_22px_rgba(212,175,55,0.22)]"
+                transition={{ delay: 0.06 * NAV_LINKS.length, duration: 0.35 }}
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark px-8 py-4 text-sm font-semibold uppercase tracking-wide text-black shadow-[0_6px_22px_rgba(212,175,55,0.22)]"
               >
-                Teklif Al
+                Ücretsiz Teklif Al
                 <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
               </MotionLink>
             </nav>

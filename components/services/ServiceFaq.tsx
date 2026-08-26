@@ -30,7 +30,7 @@ export default function ServiceFaq({ kicker, heading, faqs }: ServiceFaqProps) {
     <section
       id="service-faq"
       aria-labelledby="service-faq-heading"
-      className="relative bg-black py-28 lg:py-32"
+      className="relative bg-paper-alt py-28 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <motion.div
@@ -41,8 +41,8 @@ export default function ServiceFaq({ kicker, heading, faqs }: ServiceFaqProps) {
           variants={fadeUp}
           className="flex items-center gap-3"
         >
-          <span className="h-px w-8 bg-gold" />
-          <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold/90">
+          <span className="h-px w-8 bg-gold-dark" />
+          <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold-ink">
             {kicker}
           </span>
         </motion.div>
@@ -54,12 +54,12 @@ export default function ServiceFaq({ kicker, heading, faqs }: ServiceFaqProps) {
           viewport={{ once: true, margin: "-100px" }}
           custom={0.1}
           variants={fadeUp}
-          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-ivory sm:text-4xl md:text-5xl"
+          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-charcoal sm:text-4xl md:text-5xl"
         >
           {heading}
         </motion.h2>
 
-        <div className="mt-16 max-w-3xl divide-y divide-gold/10">
+        <div className="mt-16 max-w-3xl divide-y divide-black/10">
           {faqs.map(({ question, answer }, i) => (
             <motion.details
               key={question}
@@ -70,15 +70,15 @@ export default function ServiceFaq({ kicker, heading, faqs }: ServiceFaqProps) {
               variants={fadeUp}
               className="group py-6 first:pt-0 last:pb-0"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-lg text-ivory marker:content-none [&::-webkit-details-marker]:hidden sm:text-xl">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-lg text-charcoal marker:content-none [&::-webkit-details-marker]:hidden sm:text-xl">
                 {question}
                 <ChevronDown
-                  className="h-5 w-5 shrink-0 text-gold transition-transform duration-300 group-open:rotate-180"
+                  className="h-5 w-5 shrink-0 text-gold-dark transition-transform duration-300 group-open:rotate-180"
                   strokeWidth={2}
                   aria-hidden="true"
                 />
               </summary>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ivory/65 sm:text-base">
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-charcoal/65 sm:text-base">
                 {answer}
               </p>
             </motion.details>

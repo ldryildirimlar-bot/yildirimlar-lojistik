@@ -30,6 +30,7 @@ export const hero: ServiceHeroProps = {
   heading: "Eşyalarınız İçin Güvenli Depolama ve Özenli Ambalajlama",
   intro:
     "Eşyalarınızı, güvenli depolama alanlarında profesyonel ambalajlama ile koruma altına alıyoruz.",
+  image: "/images/depolama-ambalajlama.png",
 };
 
 export const overview: ServiceOverviewProps = {

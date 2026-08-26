@@ -1,14 +1,12 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { Clock, Globe, Mail, MapPin, MessageCircle, Phone, type LucideIcon } from "lucide-react";
+import { Clock, Globe, Mail, MessageCircle, Phone, type LucideIcon } from "lucide-react";
 import {
-  ADDRESS,
   EMAIL_ADDRESS,
   EMAIL_HREF,
   FACEBOOK_NAME,
   INSTAGRAM_URL,
-  MAPS_HREF,
   PHONE_HREF,
   PHONE_NUMBER,
   WEBSITE_URL,
@@ -38,6 +36,7 @@ interface IconItem extends ContactItemBase {
   value: string;
   href?: string;
   external?: boolean;
+  accent?: "gold" | "green";
 }
 
 const CONTACT_ITEMS: IconItem[] = [
@@ -48,9 +47,9 @@ const CONTACT_ITEMS: IconItem[] = [
     value: WHATSAPP_NUMBER,
     href: WHATSAPP_HREF,
     external: true,
+    accent: "green",
   },
   { icon: Mail, label: "E-mail", value: EMAIL_ADDRESS, href: EMAIL_HREF },
-  { icon: MapPin, label: "Adres", value: ADDRESS, href: MAPS_HREF, external: true },
   { icon: Clock, label: "Çalışma Saatleri", value: WORKING_HOURS },
   { icon: Globe, label: "Web Sitesi", value: WEBSITE_URL, href: WEBSITE_URL, external: true },
 ];
@@ -102,7 +101,7 @@ export default function ContactDetails() {
 
         <address className="not-italic">
           <div className="mt-16 grid grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2">
-            {CONTACT_ITEMS.map(({ icon: Icon, label, value, href, external }, i) => (
+            {CONTACT_ITEMS.map(({ icon: Icon, label, value, href, external, accent }, i) => (
               <motion.div
                 key={label}
                 initial="hidden"
@@ -113,7 +112,9 @@ export default function ContactDetails() {
                 className="flex items-start gap-3"
               >
                 <Icon
-                  className="mt-1 h-5 w-5 shrink-0 text-gold/80"
+                  className={`mt-1 h-5 w-5 shrink-0 ${
+                    accent === "green" ? "text-whatsapp-green" : "text-gold/80"
+                  }`}
                   strokeWidth={1.5}
                   aria-hidden="true"
                 />
@@ -126,7 +127,9 @@ export default function ContactDetails() {
                       href={href}
                       target={external ? "_blank" : undefined}
                       rel={external ? "noopener noreferrer" : undefined}
-                      className="text-base text-ivory/85 transition-colors duration-300 hover:text-gold"
+                      className={`text-base text-ivory/85 transition-colors duration-300 ${
+                        accent === "green" ? "hover:text-whatsapp-green" : "hover:text-gold"
+                      }`}
                     >
                       {value}
                     </a>

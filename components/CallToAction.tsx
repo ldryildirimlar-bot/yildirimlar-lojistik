@@ -1,9 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
-import { MessageCircle, Phone } from "lucide-react";
-import { PHONE_HREF, WHATSAPP_HREF } from "@/lib/contact";
+import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { WHATSAPP_HREF } from "@/lib/contact";
 import CinematicAtmosphere from "./CinematicAtmosphere";
+
+const MotionLink = motion.create(Link);
 
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
@@ -21,7 +24,7 @@ export default function CallToAction() {
     <section
       id="cta"
       aria-labelledby="cta-heading"
-      className="relative overflow-hidden bg-black py-32 lg:py-40"
+      className="relative overflow-hidden bg-black py-24 lg:py-32"
     >
       <CinematicAtmosphere
         level="minimal"
@@ -65,8 +68,9 @@ export default function CallToAction() {
           variants={fadeUp}
           className="mt-6 max-w-xl text-base leading-relaxed text-ivory/70 sm:text-lg"
         >
-          Evden eve nakliyat, şehirler arası taşımacılık ve uluslararası
-          lojistik ihtiyaçlarınız için ekibimizle hemen iletişime geçin.
+          Evden eve nakliyat, şehirler arası taşımacılık ve parsiyel yük
+          ihtiyaçlarınız için güvenilir iş ortağı ağımızla hemen iletişime
+          geçin.
         </motion.p>
 
         <motion.div
@@ -77,16 +81,16 @@ export default function CallToAction() {
           variants={fadeUp}
           className="mt-12 flex flex-col items-center gap-5 sm:flex-row"
         >
-          <motion.a
-            href={PHONE_HREF}
+          <MotionLink
+            href="/#cta"
             whileHover={{ y: -2 }}
             whileTap={{ y: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark px-9 py-4 text-base font-semibold tracking-wide text-black shadow-[0_10px_36px_rgba(212,175,55,0.3)] transition-shadow duration-300 hover:shadow-[0_14px_44px_rgba(212,175,55,0.45)]"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark px-9 py-4 text-base font-semibold uppercase tracking-wide text-black shadow-[0_10px_36px_rgba(212,175,55,0.3)] transition-shadow duration-300 hover:shadow-[0_14px_44px_rgba(212,175,55,0.45)]"
           >
-            <Phone className="h-4 w-4" strokeWidth={2} />
-            Hemen Ara
-          </motion.a>
+            Ücretsiz Teklif Al
+            <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+          </MotionLink>
 
           <motion.a
             href={WHATSAPP_HREF}
@@ -95,10 +99,10 @@ export default function CallToAction() {
             whileHover={{ y: -2 }}
             whileTap={{ y: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-9 py-4 text-base font-semibold tracking-wide text-ivory transition-colors duration-300 hover:border-gold hover:bg-gold/5 hover:text-gold"
+            className="inline-flex items-center gap-2 rounded-full bg-whatsapp-green px-9 py-4 text-base font-semibold uppercase tracking-wide text-white shadow-[0_10px_30px_rgba(37,211,102,0.28)] transition-colors duration-300 hover:bg-whatsapp-green-dark"
           >
             <MessageCircle className="h-4 w-4" strokeWidth={2} />
-            WhatsApp&apos;tan Yaz
+            WhatsApp&apos;tan Ulaş
           </motion.a>
         </motion.div>
       </div>

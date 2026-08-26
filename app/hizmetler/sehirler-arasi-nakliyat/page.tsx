@@ -7,7 +7,7 @@ import { metadata as pageMetadata } from "./data";
 
 export const metadata: Metadata = pageMetadata;
 
-export default function YolYardimCekiciPage() {
+export default function SehirlerArasiNakliyatPage() {
   return (
     <>
       <Navbar />

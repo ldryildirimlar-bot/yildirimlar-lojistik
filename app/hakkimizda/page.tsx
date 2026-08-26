@@ -25,6 +25,8 @@ export default function AboutPage() {
           kicker="HAKKIMIZDA"
           heading="Kurumsal Bir Anlayışla Yürütülen Taşımacılık"
           intro="Lider Yıldırımlar Lojistik & Nakliyat olarak kim olduğumuzu, nasıl çalıştığımızı ve müşterilerimize nasıl değer kattığımızı bu sayfada bulabilirsiniz."
+          image="/images/hero-truck.png"
+          imagePosition="right"
         />
         <CompanyStory />
         <MissionVision />

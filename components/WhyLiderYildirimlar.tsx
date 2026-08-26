@@ -45,7 +45,7 @@ export default function WhyLiderYildirimlar() {
     <section
       id="why-lider-yildirimlar"
       aria-labelledby="why-lider-yildirimlar-heading"
-      className="relative bg-black py-28 lg:py-32"
+      className="relative bg-paper py-28 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <motion.div
@@ -56,8 +56,8 @@ export default function WhyLiderYildirimlar() {
           variants={fadeUp}
           className="flex items-center gap-3"
         >
-          <span className="h-px w-8 bg-gold" />
-          <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold/90">
+          <span className="h-px w-8 bg-gold-dark" />
+          <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold-ink">
             Neden Lider Yıldırımlar
           </span>
         </motion.div>
@@ -69,12 +69,12 @@ export default function WhyLiderYildirimlar() {
           viewport={{ once: true, margin: "-100px" }}
           custom={0.1}
           variants={fadeUp}
-          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-ivory sm:text-4xl md:text-5xl"
+          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-charcoal sm:text-4xl md:text-5xl"
         >
           Somut Farklar
         </motion.h2>
 
-        <ul className="mt-16 max-w-2xl divide-y divide-gold/10">
+        <ul className="mt-16 max-w-2xl divide-y divide-black/10">
           {DIFFERENTIATORS.map(({ title, description }, i) => (
             <motion.li
               key={title}
@@ -86,15 +86,15 @@ export default function WhyLiderYildirimlar() {
               className="flex items-start gap-4 py-6 first:pt-0 last:pb-0"
             >
               <Check
-                className="mt-1 h-5 w-5 shrink-0 text-gold"
+                className="mt-1 h-5 w-5 shrink-0 text-gold-dark"
                 strokeWidth={2}
                 aria-hidden="true"
               />
               <div>
-                <h3 className="font-display text-lg text-ivory sm:text-xl">
+                <h3 className="font-display text-lg text-charcoal sm:text-xl">
                   {title}
                 </h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-ivory/65 sm:text-base">
+                <p className="mt-1.5 text-sm leading-relaxed text-charcoal/65 sm:text-base">
                   {description}
                 </p>
               </div>

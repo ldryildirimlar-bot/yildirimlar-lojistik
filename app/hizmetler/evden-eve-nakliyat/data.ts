@@ -32,6 +32,7 @@ export const hero: ServiceHeroProps = {
   heading: "Güvenli, Planlı ve Profesyonel Evden Eve Nakliyat",
   intro:
     "Ev eşyalarınızı özenle paketleyip, planlı bir süreçle yeni adresinize güvenle ulaştırıyoruz.",
+  image: "/images/evden-eve-nakliyat.png",
 };
 
 export const overview: ServiceOverviewProps = {

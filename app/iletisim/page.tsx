@@ -22,6 +22,7 @@ export default function ContactPage() {
           kicker="İLETİŞİM"
           heading="Bizimle İletişime Geçin"
           intro="Taşıma ihtiyaçlarınız için ekibimize telefon, WhatsApp veya e-posta yoluyla ulaşabilirsiniz."
+          image="/images/uluslararasi-lojistik.png"
         />
         <ContactDetails />
         <CallToAction />

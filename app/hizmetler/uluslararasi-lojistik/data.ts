@@ -31,6 +31,7 @@ export const hero: ServiceHeroProps = {
   heading: "Sınır Ötesi Sevkiyatlarda Güvenilir Lojistik Ortağınız",
   intro:
     "Gümrük süreçleri dahil olmak üzere uluslararası sevkiyatlarınızı uçtan uca planlı bir şekilde yönetiyoruz.",
+  image: "/images/uluslararasi-lojistik.png",
 };
 
 export const overview: ServiceOverviewProps = {

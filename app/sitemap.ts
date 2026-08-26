@@ -1,13 +1,14 @@
 import type { MetadataRoute } from "next";
 import { WEBSITE_URL } from "@/lib/contact";
+import { BLOG_ARTICLES } from "@/lib/blog";
 
 const SERVICE_SLUGS = [
   "evden-eve-nakliyat",
+  "sehirler-arasi-nakliyat",
   "uluslararasi-lojistik",
   "parsiyel-komple-yuk-tasimaciligi",
   "depolama-ambalajlama",
   "asansor-hizmeti",
-  "yol-yardim-cekici",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -53,5 +54,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...serviceRoutes];
+  const blogRoutes: MetadataRoute.Sitemap = BLOG_ARTICLES.map((article) => ({
+    url: `${WEBSITE_URL}/blog/${article.slug}`,
+    lastModified: now,
+    changeFrequency: "yearly",
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...blogRoutes];
 }

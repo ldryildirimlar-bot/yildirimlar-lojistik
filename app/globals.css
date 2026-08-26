@@ -12,6 +12,19 @@
   --gold: #d4af37;
   --gold-light: #f1d97a;
   --gold-dark: #9c7a22;
+
+  /* Deeper "ink" gold for small text on light backgrounds — the standard
+     --gold fails contrast (~1.9:1) on light backgrounds; this passes AA. */
+  --gold-ink: #7a5c1a;
+
+  /* Light, warm "paper" tones — used only on service detail pages. */
+  --paper: #f7f4ee;
+  --paper-alt: #efeae0;
+
+  /* Professional WhatsApp green — distinct from the gold brand accent,
+     reserved exclusively for WhatsApp touchpoints. */
+  --whatsapp-green: #25d366;
+  --whatsapp-green-dark: #1da851;
 }
 
 @theme inline {
@@ -24,6 +37,11 @@
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
   --color-gold-dark: var(--gold-dark);
+  --color-gold-ink: var(--gold-ink);
+  --color-paper: var(--paper);
+  --color-paper-alt: var(--paper-alt);
+  --color-whatsapp-green: var(--whatsapp-green);
+  --color-whatsapp-green-dark: var(--whatsapp-green-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-playfair);
@@ -31,6 +49,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keeps anchor-linked section headings (e.g. Navbar's "/#services",
+     "/#how-we-work", "/#blog") from landing underneath the fixed Navbar —
+     covers both the 80px mobile bar and the 96px desktop bar with margin. */
+  scroll-padding-top: 104px;
 }
 
 body {
@@ -50,12 +72,25 @@ body {
   outline-offset: 2px;
 }
 
-/* Reusable glassmorphism surface for the navbar / cards */
+/* Reusable dark glassmorphism surface for the navbar / cards — tinted
+   enough (not just blurred) to stay dark regardless of what scrolls
+   behind it, so white nav text keeps AA contrast over light sections too. */
 .glass {
-  background: rgba(247, 245, 240, 0.06);
+  background: rgba(5, 5, 5, 0.72);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(212, 175, 55, 0.14);
+}
+
+/* Navbar's "at rest" (not yet scrolled) surface — lighter tint than
+   .glass so the Hero photo still reads through it, but still dark and
+   blurred enough that white nav text and the phone number stay readable
+   even over the brighter sky/highlight areas of the Hero image. */
+.glass-rest {
+  background: rgba(5, 5, 5, 0.38);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.08);
 }
 
 /* Gold gradient text for premium accents */

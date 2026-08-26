@@ -31,6 +31,7 @@ export const hero: ServiceHeroProps = {
   heading: "Yük Hacminize Uygun Esnek Taşıma Çözümleri",
   intro:
     "Parsiyel veya komple yük taşımacılığında, hacminize uygun planlama ile güvenli sevkiyat sağlıyoruz.",
+  image: "/images/parsiyel-komple-yuk.png",
 };
 
 export const overview: ServiceOverviewProps = {

@@ -31,6 +31,7 @@ export const hero: ServiceHeroProps = {
   heading: "Yüksek Katlı Taşımalarda Hızlı ve Hasarsız Çözüm",
   intro:
     "Cephe asansörü sistemiyle, yüksek katlı taşımalarınızı hızlı ve hasarsız şekilde gerçekleştiriyoruz.",
+  image: "/images/asansor-hizmeti.png",
 };
 
 export const overview: ServiceOverviewProps = {

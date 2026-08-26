@@ -28,7 +28,7 @@ export default function ServiceOverview({
     <section
       id="service-overview"
       aria-labelledby="service-overview-heading"
-      className="relative bg-black py-28 lg:py-32"
+      className="relative bg-paper-alt py-28 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <motion.div
@@ -39,8 +39,8 @@ export default function ServiceOverview({
           variants={fadeUp}
           className="flex items-center gap-3"
         >
-          <span className="h-px w-8 bg-gold" />
-          <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold/90">
+          <span className="h-px w-8 bg-gold-dark" />
+          <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold-ink">
             {kicker}
           </span>
         </motion.div>
@@ -52,7 +52,7 @@ export default function ServiceOverview({
           viewport={{ once: true, margin: "-100px" }}
           custom={0.1}
           variants={fadeUp}
-          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-ivory sm:text-4xl md:text-5xl"
+          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-charcoal sm:text-4xl md:text-5xl"
         >
           {heading}
         </motion.h2>
@@ -63,7 +63,7 @@ export default function ServiceOverview({
           viewport={{ once: true, margin: "-100px" }}
           custom={0.2}
           variants={fadeUp}
-          className="mt-8 max-w-2xl space-y-5 text-base leading-relaxed text-ivory/70 sm:text-lg"
+          className="mt-8 max-w-2xl space-y-5 text-base leading-relaxed text-charcoal/70 sm:text-lg"
         >
           {paragraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>

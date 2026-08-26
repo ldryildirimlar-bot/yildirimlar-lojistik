@@ -43,7 +43,7 @@ export default function ServiceOffer({ kicker, heading, items }: ServiceOfferPro
     <section
       id="service-offer"
       aria-labelledby="service-offer-heading"
-      className="relative bg-black py-28 lg:py-32"
+      className="relative bg-paper py-28 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <motion.div
@@ -54,8 +54,8 @@ export default function ServiceOffer({ kicker, heading, items }: ServiceOfferPro
           variants={fadeUp}
           className="flex items-center gap-3"
         >
-          <span className="h-px w-8 bg-gold" />
-          <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold/90">
+          <span className="h-px w-8 bg-gold-dark" />
+          <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold-ink">
             {kicker}
           </span>
         </motion.div>
@@ -67,14 +67,12 @@ export default function ServiceOffer({ kicker, heading, items }: ServiceOfferPro
           viewport={{ once: true, margin: "-100px" }}
           custom={0.1}
           variants={fadeUp}
-          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-ivory sm:text-4xl md:text-5xl"
+          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-charcoal sm:text-4xl md:text-5xl"
         >
           {heading}
         </motion.h2>
 
-        <div
-          className={`mt-16 grid grid-cols-1 gap-x-12 gap-y-14 sm:grid-cols-2 ${lgCols}`}
-        >
+        <div className={`mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 ${lgCols}`}>
           {items.map(({ icon: Icon, title, description }, i) => (
             <motion.div
               key={title}
@@ -83,16 +81,18 @@ export default function ServiceOffer({ kicker, heading, items }: ServiceOfferPro
               viewport={{ once: true, margin: "-80px" }}
               custom={0.06 * i}
               variants={fadeUp}
+              whileHover={{ y: -4, transition: { duration: 0.3, ease: "easeOut" } }}
+              className="rounded-xl border border-black/10 bg-white p-7 shadow-[0_10px_30px_-18px_rgba(23,20,15,0.35)] transition-all duration-500 hover:border-gold/30"
             >
               <Icon
-                className="h-6 w-6 text-gold/80"
+                className="h-6 w-6 text-gold-dark"
                 strokeWidth={1.5}
                 aria-hidden="true"
               />
-              <h3 className="mt-5 font-display text-lg text-ivory sm:text-xl">
+              <h3 className="mt-5 font-display text-lg text-charcoal sm:text-xl">
                 {title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-ivory/65">
+              <p className="mt-2 text-sm leading-relaxed text-charcoal/65">
                 {description}
               </p>
             </motion.div>

@@ -48,7 +48,7 @@ export default function ServiceProcess({ kicker, heading, steps }: ServiceProces
     <section
       id="service-process"
       aria-labelledby="service-process-heading"
-      className="relative bg-black py-28 lg:py-32"
+      className="relative bg-paper-alt py-28 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <motion.div
@@ -59,8 +59,8 @@ export default function ServiceProcess({ kicker, heading, steps }: ServiceProces
           variants={fadeUp}
           className="flex items-center gap-3"
         >
-          <span className="h-px w-8 bg-gold" />
-          <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold/90">
+          <span className="h-px w-8 bg-gold-dark" />
+          <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold-ink">
             {kicker}
           </span>
         </motion.div>
@@ -72,7 +72,7 @@ export default function ServiceProcess({ kicker, heading, steps }: ServiceProces
           viewport={{ once: true, margin: "-100px" }}
           custom={0.1}
           variants={fadeUp}
-          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-ivory sm:text-4xl md:text-5xl"
+          className="mt-6 max-w-2xl font-display text-3xl leading-tight text-charcoal sm:text-4xl md:text-5xl"
         >
           {heading}
         </motion.h2>
@@ -80,7 +80,7 @@ export default function ServiceProcess({ kicker, heading, steps }: ServiceProces
         <div className="relative mt-24">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute top-12 hidden h-px bg-gradient-to-r from-gold/0 via-gold/30 to-gold/0 lg:block"
+            className="pointer-events-none absolute top-12 hidden h-px bg-gradient-to-r from-gold-dark/0 via-gold-dark/40 to-gold-dark/0 lg:block"
             style={{ left: lineInset, right: lineInset }}
           />
 
@@ -101,14 +101,14 @@ export default function ServiceProcess({ kicker, heading, steps }: ServiceProces
                   </span>
                 </div>
                 <Icon
-                  className="mt-6 h-4 w-4 text-gold/50"
+                  className="mt-6 h-4 w-4 text-gold-dark/70"
                   strokeWidth={1.5}
                   aria-hidden="true"
                 />
-                <h3 className="mt-4 font-display text-lg text-ivory sm:text-xl">
+                <h3 className="mt-4 font-display text-lg text-charcoal sm:text-xl">
                   {title}
                 </h3>
-                <p className="mt-2 max-w-xs text-sm leading-relaxed text-ivory/65">
+                <p className="mt-2 max-w-xs text-sm leading-relaxed text-charcoal/65">
                   {description}
                 </p>
               </motion.li>
