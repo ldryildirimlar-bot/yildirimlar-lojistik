@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import { Clock, MessageCircle, Send, ShieldCheck, Zap } from "lucide-react";
 import { WHATSAPP_HREF } from "@/lib/contact";
+import { trackContactConversion } from "@/lib/gtag";
 
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
@@ -84,6 +85,7 @@ export default function QuoteForm() {
       .filter(Boolean)
       .join("\n");
 
+    trackContactConversion();
     window.open(`${WHATSAPP_HREF}?text=${encodeURIComponent(message)}`, "_blank");
   }
 
@@ -195,6 +197,7 @@ export default function QuoteForm() {
                 href={WHATSAPP_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackContactConversion}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp-green px-8 py-4 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_10px_30px_rgba(37,211,102,0.28)] transition-colors duration-300 hover:bg-whatsapp-green-dark"
               >
                 <MessageCircle className="h-4 w-4" strokeWidth={2} />

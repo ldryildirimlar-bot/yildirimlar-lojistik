@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import { WHATSAPP_HREF } from "@/lib/contact";
+import { trackContactConversion } from "@/lib/gtag";
 import CinematicAtmosphere from "./CinematicAtmosphere";
 
 const MotionLink = motion.create(Link);
@@ -96,6 +97,7 @@ export default function CallToAction() {
             href={WHATSAPP_HREF}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={trackContactConversion}
             whileHover={{ y: -2 }}
             whileTap={{ y: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}

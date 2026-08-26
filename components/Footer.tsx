@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Clock, Mail, MessageCircle, Phone } from "lucide-react";
@@ -12,6 +14,7 @@ import {
   WHATSAPP_NUMBER,
   WORKING_HOURS,
 } from "@/lib/contact";
+import { trackContactConversion } from "@/lib/gtag";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/BrandIcons";
 
 const SERVICE_LINKS = [
@@ -111,7 +114,7 @@ export default function Footer() {
                   <span className="block text-xs uppercase tracking-wide text-ivory/60">
                     Telefon
                   </span>
-                  <a href={PHONE_HREF} className={linkClasses}>
+                  <a href={PHONE_HREF} onClick={trackContactConversion} className={linkClasses}>
                     {PHONE_NUMBER}
                   </a>
                 </div>
@@ -177,6 +180,7 @@ export default function Footer() {
               href={WHATSAPP_HREF}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={trackContactConversion}
               className="mt-5 inline-flex items-center gap-2 rounded-full bg-whatsapp-green px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-whatsapp-green-dark"
             >
               <MessageCircle className="h-4 w-4" strokeWidth={2} aria-hidden="true" />

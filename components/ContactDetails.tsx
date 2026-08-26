@@ -14,6 +14,7 @@ import {
   WHATSAPP_NUMBER,
   WORKING_HOURS,
 } from "@/lib/contact";
+import { trackContactConversion } from "@/lib/gtag";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/BrandIcons";
 
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
@@ -37,10 +38,17 @@ interface IconItem extends ContactItemBase {
   href?: string;
   external?: boolean;
   accent?: "gold" | "green";
+  trackConversion?: boolean;
 }
 
 const CONTACT_ITEMS: IconItem[] = [
-  { icon: Phone, label: "Telefon", value: PHONE_NUMBER, href: PHONE_HREF },
+  {
+    icon: Phone,
+    label: "Telefon",
+    value: PHONE_NUMBER,
+    href: PHONE_HREF,
+    trackConversion: true,
+  },
   {
     icon: MessageCircle,
     label: "WhatsApp",
@@ -48,6 +56,7 @@ const CONTACT_ITEMS: IconItem[] = [
     href: WHATSAPP_HREF,
     external: true,
     accent: "green",
+    trackConversion: true,
   },
   { icon: Mail, label: "E-mail", value: EMAIL_ADDRESS, href: EMAIL_HREF },
   { icon: Clock, label: "Çalışma Saatleri", value: WORKING_HOURS },
@@ -101,7 +110,7 @@ export default function ContactDetails() {
 
         <address className="not-italic">
           <div className="mt-16 grid grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2">
-            {CONTACT_ITEMS.map(({ icon: Icon, label, value, href, external, accent }, i) => (
+            {CONTACT_ITEMS.map(({ icon: Icon, label, value, href, external, accent, trackConversion }, i) => (
               <motion.div
                 key={label}
                 initial="hidden"
@@ -127,6 +136,7 @@ export default function ContactDetails() {
                       href={href}
                       target={external ? "_blank" : undefined}
                       rel={external ? "noopener noreferrer" : undefined}
+                      onClick={trackConversion ? trackContactConversion : undefined}
                       className={`text-base text-ivory/85 transition-colors duration-300 ${
                         accent === "green" ? "hover:text-whatsapp-green" : "hover:text-gold"
                       }`}
