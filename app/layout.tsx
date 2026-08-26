@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import Script from "next/script";
 import { WEBSITE_URL } from "@/lib/contact";
 import { organizationJsonLd } from "@/lib/structuredData";
 import { buildMetadata } from "@/lib/seo";
@@ -66,7 +66,6 @@ export default function RootLayout({
             __html: JSON.stringify(organizationJsonLd),
           }}
         />
-
         {children}
       </body>
     </html>
