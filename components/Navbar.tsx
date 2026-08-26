@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, Phone, X } from "lucide-react";
 import { PHONE_HREF, PHONE_NUMBER, WORKING_HOURS } from "@/lib/contact";
-import { trackContactConversion } from "@/lib/gtag";
+import { trackPhoneConversion } from "@/lib/gtag";
 
 const MotionLink = motion.create(Link);
 
@@ -76,7 +76,10 @@ export default function Navbar() {
         <div className="flex items-center justify-self-end gap-6">
           <a
             href={PHONE_HREF}
-            onClick={trackContactConversion}
+            onClick={(e) => {
+              e.preventDefault();
+              trackPhoneConversion(PHONE_HREF);
+            }}
             className="hidden items-center gap-2.5 text-ivory/90 transition-colors duration-300 hover:text-gold xl:flex"
           >
             <Phone className="h-4 w-4 text-gold" strokeWidth={2} aria-hidden="true" />
@@ -162,7 +165,10 @@ export default function Navbar() {
 
               <a
                 href={PHONE_HREF}
-                onClick={trackContactConversion}
+                onClick={(e) => {
+                  e.preventDefault();
+                  trackPhoneConversion(PHONE_HREF);
+                }}
                 className="mt-2 flex items-center gap-2.5 text-ivory/80 transition-colors duration-300 hover:text-gold"
               >
                 <Phone className="h-4 w-4 text-gold" strokeWidth={2} aria-hidden="true" />

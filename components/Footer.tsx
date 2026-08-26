@@ -14,7 +14,7 @@ import {
   WHATSAPP_NUMBER,
   WORKING_HOURS,
 } from "@/lib/contact";
-import { trackContactConversion } from "@/lib/gtag";
+import { trackContactConversion, trackPhoneConversion } from "@/lib/gtag";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/BrandIcons";
 
 const SERVICE_LINKS = [
@@ -114,7 +114,14 @@ export default function Footer() {
                   <span className="block text-xs uppercase tracking-wide text-ivory/60">
                     Telefon
                   </span>
-                  <a href={PHONE_HREF} onClick={trackContactConversion} className={linkClasses}>
+                  <a
+                    href={PHONE_HREF}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      trackPhoneConversion(PHONE_HREF);
+                    }}
+                    className={linkClasses}
+                  >
                     {PHONE_NUMBER}
                   </a>
                 </div>

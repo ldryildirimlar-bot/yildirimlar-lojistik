@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import { MessageCircle, Phone } from "lucide-react";
 import { PHONE_HREF, WHATSAPP_HREF } from "@/lib/contact";
-import { trackContactConversion } from "@/lib/gtag";
+import { trackContactConversion, trackPhoneConversion } from "@/lib/gtag";
 import TrustBar from "./TrustBar";
 
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
@@ -91,7 +91,10 @@ function CtaButtons({ className = "" }: { className?: string }) {
     >
       <motion.a
         href={PHONE_HREF}
-        onClick={trackContactConversion}
+        onClick={(e) => {
+          e.preventDefault();
+          trackPhoneConversion(PHONE_HREF);
+        }}
         whileHover={{ y: -2 }}
         whileTap={{ y: 0 }}
         transition={{ duration: 0.25, ease: "easeOut" }}

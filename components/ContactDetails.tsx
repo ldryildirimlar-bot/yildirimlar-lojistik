@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Clock, Globe, Mail, MessageCircle, Phone, type LucideIcon } from "lucide-react";
 import {
@@ -14,7 +15,7 @@ import {
   WHATSAPP_NUMBER,
   WORKING_HOURS,
 } from "@/lib/contact";
-import { trackContactConversion } from "@/lib/gtag";
+import { trackContactConversion, trackPhoneConversion } from "@/lib/gtag";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/BrandIcons";
 
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
@@ -38,7 +39,7 @@ interface IconItem extends ContactItemBase {
   href?: string;
   external?: boolean;
   accent?: "gold" | "green";
-  trackConversion?: boolean;
+  onLinkClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 const CONTACT_ITEMS: IconItem[] = [
@@ -47,7 +48,10 @@ const CONTACT_ITEMS: IconItem[] = [
     label: "Telefon",
     value: PHONE_NUMBER,
     href: PHONE_HREF,
-    trackConversion: true,
+    onLinkClick: (event) => {
+      event.preventDefault();
+      trackPhoneConversion(PHONE_HREF);
+    },
   },
   {
     icon: MessageCircle,
@@ -56,7 +60,7 @@ const CONTACT_ITEMS: IconItem[] = [
     href: WHATSAPP_HREF,
     external: true,
     accent: "green",
-    trackConversion: true,
+    onLinkClick: trackContactConversion,
   },
   { icon: Mail, label: "E-mail", value: EMAIL_ADDRESS, href: EMAIL_HREF },
   { icon: Clock, label: "Çalışma Saatleri", value: WORKING_HOURS },
@@ -110,7 +114,7 @@ export default function ContactDetails() {
 
         <address className="not-italic">
           <div className="mt-16 grid grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2">
-            {CONTACT_ITEMS.map(({ icon: Icon, label, value, href, external, accent, trackConversion }, i) => (
+            {CONTACT_ITEMS.map(({ icon: Icon, label, value, href, external, accent, onLinkClick }, i) => (
               <motion.div
                 key={label}
                 initial="hidden"
@@ -136,7 +140,7 @@ export default function ContactDetails() {
                       href={href}
                       target={external ? "_blank" : undefined}
                       rel={external ? "noopener noreferrer" : undefined}
-                      onClick={trackConversion ? trackContactConversion : undefined}
+                      onClick={onLinkClick}
                       className={`text-base text-ivory/85 transition-colors duration-300 ${
                         accent === "green" ? "hover:text-whatsapp-green" : "hover:text-gold"
                       }`}
